@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        const students = [];
+        function insert()
+        {
+            let name = document.getElementById("name").value;
+            let Id = document.getElementById("Id").value;
+            let qualification = document.getElementById("qualification").value;
+            let course = document.getElementById("course").value;
+            let student = {
+                name: name,
+                Id: Id,
+                qualification: qualification,
+                course: course,
+                description: function () {
+                    return "Info: " + this.name + " | " + this.Id + " | " + this.qualification + " | " + this.course;
+                }
+            };
+            students.push(student);
+            document.getElementById("name").value = "";
+            document.getElementById("Id").value = "";
+            document.getElementById("qualification").value = "";
+            document.getElementById("course").value = "";    
+        }
+
+        function show_student_info() {
+            let info = "";
+            for (let i = 0; i < students.length; i++) {
+                info += students[i].description() + "<br>";
+            }
+            document.getElementById("demo_div").innerHTML = info;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input id="name" placeholder="Enter the name">
+        <input id="Id" placeholder="Enter the Id">
+        <input id="qualification" placeholder="Enter the qualification">
+        <input id="course" placeholder="Enter the course">
+    </div>
+    <button onclick="insert()">Insert Info</button>
+
+    <div id="demo_div"></div>
+
+    <button onclick="show_student_info()">Click Here for Student Info</button>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        
+        const student ={
+            name : "Navya",
+            Id : "S00448385",
+            qualification : "Master's in computer science",
+            course : "front-end",
+            description : function()
+            {
+                return "Info:" + this.name + " "+ this.Id + " " +this.qualification + " "+ this.course;
+            }
+        };
+        function show_student_info()
+        {
+            document.getElementById("demo_div").innerHTML = student.description();
+        }
+        function insert()
+        {
+            let name = document.getElementById("name").value;
+            student.name = name;
+            let Id = document.getElementById("Id").value;
+            student.Id = Id;
+            let qualification = document.getElementById("qualification").value;
+            student.qualification = qualification;
+            let course = document.getElementById("course").value;
+            student.course = course;
+            
+
+        }
+        
+    </script>
+</head>
+<body>
+    <h2>Students Information</h2>
+    <div>
+        <input id = "name" placeholder = "Enter the name">
+        <input id = "Id" placeholder = "Enter the Id">
+        <input id = "qualification" placeholder = "Enter the qualification">
+        <input id = "course" placeholder = "Enter the course">
+    </div>
+    <button onclick = insert()> insert info </button>
+    <div id="demo_div">
+        
+    </div>
+    <button onclick="show_student_info()">cilck here for student info</button>
+</body>
+</html>

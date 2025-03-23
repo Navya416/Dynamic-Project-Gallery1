@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="number" placeholder="Enter a positive number" id="input" onkeyup="gradeUpdate()"/>
+        <div id="demo"></div>
+        <script>
+            function gradeUpdate() {
+                const n = parseFloat(document.getElementById("input").value);
+                let text = "";
+
+                if (isNaN(n) || n <= 0) {
+                    text = "Please enter a positive number.";
+                } else {
+                    const lines = Array.from({ length: n }, (_, i) => "* ".repeat(i + 1) + "<br>");
+                    text = lines.join("");
+                }
+
+                document.getElementById("demo").innerHTML = text;
+            }
+        </script>
+    </body>
+</html>

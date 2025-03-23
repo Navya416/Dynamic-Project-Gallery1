@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <script>
+        let tStack = [];
+
+        function addTask() {
+            const tInput = document.getElementById("taskInput");
+            const task = tInput.value.trim();
+
+            if (task === "") {
+                alert("Enter a valid task to add.");
+                return;
+            }
+
+            tStack.push(task);
+            tInput.value = "";
+            displayStack();
+        }
+
+        function undoTask() {
+            if (tStack.length === 0) {
+                alert("No tasks to undo.");
+                return;
+            }
+
+            tStack.pop();
+            displayStack();
+        }
+
+        function displayStack() {
+            const stackDisplay = document.getElementById("stackDisplay");
+            stackDisplay.textContent = tStack.length > 0 ? tStack.join(", ") : "No tasks added.";
+        }
+    </script>
+</head>
+<body>
+    <h3>Task Manager</h3>
+    <input type="text" id="taskInput" placeholder="Enter task name" />
+    <button onclick="addTask()">Add Task</button>
+    <button onclick="undoTask()">Undo Task</button>
+    
+    <h4>Process Line</h4>
+    <div id="stackDisplay">.</div>
+</body>
+</html>

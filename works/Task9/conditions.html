@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function checkEnter(event) {
+            if (event.key == 'Enter') {
+                calculate_grade();
+            }
+        }
+            function calculate_grade() {
+            var score = parseFloat(document.getElementById("score_input").value);
+            var grade = "";
+            
+            if (score >= 80) {
+                grade = "A";
+            } else if (score >= 60) {
+                grade = "B";
+            } else if (score >= 40) {
+                grade = "C";
+            } else if (score >= 0) {
+                grade = "F";
+            } else {
+                grade = "Invalid score";
+            }
+
+            document.getElementById("grade_span").innerHTML = grade;
+        }
+        </script>
+    </head>
+        
+        <body>
+            <h3>Grade Calculator</h3>
+            <input type="number" id="score_input" placeholder="Enter score" onkeydown="checkEnter(event)" />
+            <h2>Your grade is: <span id="grade_span"></span></h2>
+        </body>   
+     
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let lastRandomValue = '';
+
+        function generate() {
+            let min_value = parseInt(document.getElementById("input_a").value);
+            let max_value = parseInt(document.getElementById("input_b").value);
+            let random_value = Math.floor(Math.random() * (max_value - min_value)) + min_value;
+            lastRandomValue = random_value;  
+            document.getElementById("output_div").innerHTML = random_value;
+        }
+
+        function clear_everything() {
+            document.getElementById("container").innerHTML = "<h1>Proof!</h1>";
+        }
+
+        function show_vanished_output() {
+            document.getElementById("container").innerHTML = `<h1>Vanished Output: ${lastRandomValue}</h1>`;
+        }
+
+   
+        setTimeout(() => {
+            clear_everything();
+            setTimeout(show_vanished_output, 5000);
+        }, 10000);
+    </script>
+    </head>
+    <body>
+        <div id="container">
+            <input placeholder="Enter A" id="input_a"/>
+            <input placeholder="Enter B" id="input_b"/>
+            <br><br>
+            <button onclick="generate();">Generate Random Value</button>
+            <div id="output_div"></div>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       body {
+        text-align: center;
+        height: 50%;
+        width: 50%;
+        justify-content: center;
+        margin-left: 330px;
+       }
+       h1 {
+        font-size: 24px;
+        background-color: beige;
+       }
+       .row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+       }
+       .input-box {
+        padding: 10px;
+        margin: 5px;
+        width: 45%;
+       }
+       button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        width: 48%;
+        background-color: green;
+       }
+       p {
+        font-size: 30px;
+        height: 50px;
+        text-align: center;
+        background-color: beige;
+       }
+       #red {
+        background-color: red;
+       }
+    </style>
+    <script>
+        const students = [];
+
+        function student(name, Id, qualification, course) {
+            this.name = name;
+            this.Id = Id;
+            this.qualification = qualification;
+            this.course = course;
+            this.description = function() {
+                return "Info: " + this.name + " " + this.Id + " " + this.qualification + " " + this.course;
+            };
+        }
+
+        function insert() {
+            let name = document.getElementById("name").value;
+            let Id = document.getElementById("Id").value;
+            let qualification = document.getElementById("qualification").value;
+            let course = document.getElementById("course").value;
+
+            let new_student = new student(name, Id, qualification, course);
+            students.push(new_student);
+        }
+
+        function show_student_info() {
+            let info = "";
+            for (let i = 0; i < students.length; i++) {
+                info += students[i].description() + "<br>";
+            }
+            document.getElementById("demo_div").innerHTML = info;
+        }
+
+        function clear_all() {
+            document.getElementById("name").value = "";
+            document.getElementById("Id").value = "";
+            document.getElementById("qualification").value = "";
+            document.getElementById("course").value = "";
+        }
+
+        function clear_display() {
+            document.getElementById("demo_div").innerHTML = "";
+        }
+
+        function search() {
+            var searchTerm = document.getElementById("search").value.toLowerCase();
+            var results = '';
+            for (let i = 0; i < students.length; i++) {
+                if (students[i].name.toLowerCase().includes(searchTerm) || students[i].Id.includes(searchTerm)) {
+                    results += '<p>' + students[i].description() + '</p>';
+                }
+            }
+            document.getElementById("demo_div").innerHTML = results ? results : "No results found";
+        }
+
+        function search_student() {
+            let searchField1 = document.getElementById("searchField1").value;
+            let searchField2 = document.getElementById("searchField2").value;
+            let searchValue1 = document.getElementById("searchValue1").value.toLowerCase();
+            let searchValue2 = document.getElementById("searchValue2").value.toLowerCase();
+            let info = "";
+
+            for (let i = 0; i < students.length; i++) {
+                if ((students[i][searchField1].toLowerCase() === searchValue1) && 
+                    (students[i][searchField2].toLowerCase() === searchValue2)) {
+                    info += students[i].description() + "<br>";
+                }
+            }
+            document.getElementById("demo_div").innerHTML = info;
+        }
+    </script>
+</head>
+<body>
+    <p>Students Information</p>
+    <div class="row">
+        <input class="input-box" id="name" placeholder="Enter the name">
+        <input class="input-box" id="Id" placeholder="Enter the Id">
+    </div>
+    <div class="row">
+        <input class="input-box" id="qualification" placeholder="Enter the qualification">
+        <input class="input-box" id="course" placeholder="Enter the course">
+    </div>
+    <div class="row">
+        <input class="input-box" id="search" placeholder="Search by name or Id">
+        <button onclick="search()">Search</button>
+    </div>
+    <button onclick="insert()">Insert Info</button>
+    <button id="red" onclick="clear_all()">Clear Inputs</button>
+    <button onclick="show_student_info()">Show All</button>
+    <button id="red" onclick="clear_display()">Clear Display</button>
+    <div id="demo_div">
+        <h1>Current Students Information:</h1>
+    </div>
+    
+</div>
+</body>
+</html>

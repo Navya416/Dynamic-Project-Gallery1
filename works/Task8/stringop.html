@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function generate(){
+                var input_Field=document.getElementById("input_Field").value;
+                input_Field = input_Field.toUpperCase() ;
+                document.getElementById("output_Field").value = input_Field ;
+                
+            }
+
+        </script>
+        <body>
+            <input id="input_Field" placeholder="Input Text" oninput=generate()>
+            <input id="output_Field" placeholder="Output Text" disabled>
+        </body>
+    
+    </head>
+    
+
+</html>

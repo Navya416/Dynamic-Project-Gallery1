@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        input {
+            width: 300px;
+            font-size: 20px;
+        }
+        button {
+            width: 230px;
+            font-size: 20px;
+        }
+        .button_div {
+            margin-top: 10px;
+        }
+        #container {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        function add() {
+            x = parseInt(document.getElementById('num1').value);
+            y = parseInt(document.getElementById('num2').value);
+            let result = x + y;
+            document.getElementById('res').value = result;
+        }
+
+        function subtract() {
+            x = parseInt(document.getElementById('num1').value);
+            y = parseInt(document.getElementById('num2').value);
+            let result = x - y;
+            document.getElementById('res').value = result;
+        }
+
+        function multiply() {
+            x = parseInt(document.getElementById('num1').value);
+            y = parseInt(document.getElementById('num2').value);
+            let result = x * y;
+            document.getElementById('res').value = result;
+        }
+
+        function divide() {
+            x = parseInt(document.getElementById('num1').value);
+            y = parseInt(document.getElementById('num2').value);
+            let result = x / y;
+            document.getElementById('res').value = result;
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="input_div">
+            <input type="text" placeholder="Enter the value of X" id="num1"/>
+            <input type="text" placeholder="Enter the value of Y" id="num2"/>
+            <input type="text" placeholder="Result will appear here" id="res" disabled/>
+        </div>
+
+        <div class="button_div">
+            <button onclick="add()">Addition (X + Y)</button>
+            <button onclick="subtract()">Subtraction (X - Y)</button>
+            <button onclick="multiply()">Multiplication (X * Y)</button>
+            <button onclick="divide()">Division (X / Y)</button>
+        </div>            
+    </div>
+</body>
+</html>
