@@ -88,4 +88,4 @@ function displayProjects() {
     });
 }
 
-document.addEventListener("ContentLoaded", displayProjects);
+document.addEventListener("DOMContentLoaded", displayProjects);
